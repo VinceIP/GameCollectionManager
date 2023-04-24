@@ -9,6 +9,14 @@ public class MenuMain extends MenuBase implements Menu {
 
     public MenuMain(Scanner inputScanner, GameCollectionManagerCLI cli) {
         super(inputScanner, cli);
+        run();
+    }
+
+    @Override
+    public void run(){
+        while (true){
+            super.run();
+        }
     }
 
     @Override

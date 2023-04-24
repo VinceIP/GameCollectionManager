@@ -8,8 +8,15 @@ import java.util.Scanner;
 public class MenuCollection extends MenuBase implements Menu {
     public MenuCollection(Scanner inputScanner, GameCollectionManagerCLI cli) {
         super(inputScanner, cli);
+        run();
     }
 
+    @Override
+    public void run() {
+        while (true) {
+            super.run();
+        }
+    }
 
     @Override
     public void displayOptions() {
@@ -26,7 +33,14 @@ public class MenuCollection extends MenuBase implements Menu {
         try {
             selection = inputScanner.nextInt();
             switch (selection) {
-                case 1, 2, 3, 4:
+                case 1:
+                    return new MenuCollectionView(inputScanner, cli);
+                case 2:
+                    System.out.println("Needs implemented.");
+                    break;
+                case 3:
+                    break;
+                case 4:
                     System.out.println("Needs implemented.");
                     break;
                 case 5:

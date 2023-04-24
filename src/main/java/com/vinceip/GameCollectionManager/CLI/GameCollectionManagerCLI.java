@@ -4,9 +4,11 @@ import com.vinceip.GameCollectionManager.CLI.menu.MenuBase;
 import com.vinceip.GameCollectionManager.CLI.menu.MenuCollection;
 import com.vinceip.GameCollectionManager.CLI.menu.MenuMain;
 import com.vinceip.GameCollectionManager.CLI.menu.Menu;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class GameCollectionManagerCLI {
     private Menu currentMenu;
     private Scanner inputScanner = new Scanner(System.in);

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.util.List;
-
 @Component
 @RestController
 @RequestMapping("/games")
@@ -22,8 +21,13 @@ public class GameController{
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Game> list() throws SQLException {
-        return gameDao.selectGames();
+    public List<Game> list() {
+        try{
+            return gameDao.selectGames();
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
 
