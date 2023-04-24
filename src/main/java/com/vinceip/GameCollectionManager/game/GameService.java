@@ -1,5 +1,6 @@
 package com.vinceip.GameCollectionManager.game;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -14,19 +15,20 @@ import java.util.List;
 @Component
 public class GameService implements GameDao {
 
+    @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public GameService(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    private ResultSet query(String sql) throws SQLException {
+        Connection connection = jdbcTemplate.getDataSource().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        return preparedStatement.executeQuery();
     }
 
     @Override
     public List<Game> selectGames() {
         List<Game> games = new ArrayList<>();
         String sql = "SELECT * FROM game;";
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery();) {
+        try (ResultSet resultSet = query(sql)) {
             while (resultSet.next()) {
                 games.add(mapRowtoGame(resultSet));
             }
@@ -48,6 +50,10 @@ public class GameService implements GameDao {
 
     @Override
     public Game addGame(Game game) {
+        Game newGame = new Game();
+        String sql = "INSERT INTO game(game_name, game_rating, game_description, game_released, game_website, " +
+                "game_metacritic_url, game_alternate_names " +
+                "VALUES(?, ?, ?, ?, ?, ? ,?);";
         return null;
     }
 
