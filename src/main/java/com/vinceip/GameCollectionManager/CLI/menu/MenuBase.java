@@ -2,8 +2,6 @@ package com.vinceip.GameCollectionManager.CLI.menu;
 
 
 import com.vinceip.GameCollectionManager.CLI.GameCollectionManagerCLI;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -64,9 +62,7 @@ public class MenuBase implements Menu {
     public void clear() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             System.out.println(e.getMessage());
         }
     }

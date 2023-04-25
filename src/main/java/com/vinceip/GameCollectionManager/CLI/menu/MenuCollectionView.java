@@ -4,8 +4,6 @@ import com.vinceip.GameCollectionManager.CLI.GameCollectionManagerCLI;
 import com.vinceip.GameCollectionManager.SpringContext;
 import com.vinceip.GameCollectionManager.game.Game;
 import com.vinceip.GameCollectionManager.game.GameController;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.InputMismatchException;
 import java.util.List;

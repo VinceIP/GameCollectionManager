@@ -1,6 +1,8 @@
 package com.vinceip.GameCollectionManager.CLI.menu;
 
 import com.vinceip.GameCollectionManager.CLI.GameCollectionManagerCLI;
+import com.vinceip.GameCollectionManager.game.GameAPIService;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -35,7 +37,8 @@ public class MenuMain extends MenuBase implements Menu {
                 case 1:
                     return new MenuCollection(inputScanner, cli);
                 case 2:
-                    System.out.println("Needs implemented.");
+                    GameAPIService gameAPIService = new GameAPIService(new RestTemplate());
+                    gameAPIService.get("fields *;");
                     break;
                 case 3:
                     System.exit(1);
